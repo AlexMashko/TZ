@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tz1 lighIt Python Mashko ALex</title>
+</head>
+<body>
+	<script>
+		var r= prompt('введите римскую цифру, например: ', 'IV');
+		
+		
+		
+
+var font_ar = [1,4,5,9,10,40,50,90,100,400,500,900,1000,4000,5000,9000,10000];// all arabian alphabet
+var font_rom = ["I","IV","V","IX","X","XL","L","XC","C","CD","D","CM","M",
+"M&#8577;","&#8577;","&#8577;&#8578;","&#8578;"];//all romanian alphabet
+
+if(r) console.log(to_arab(r));	
+
+function to_arab(text) {
+ var text = text.toUpperCase();//все цыфры приводим к большим
+ var rezult = 0;
+ var position = 0; //позиция где у нас совпадет цифра
+ var n = font_ar.length - 1;//yначинаем перебирать с конца массива
+ while (n >= 0 && position < text.length) {
+    if (text.substr(position, font_rom[n].length) == font_rom[n]) {//если метод substr() вернет строку равную одному из элементов массива
+    	//console.log(font_rom[n].length+' : '+font_rom[n]+' n: '+n);
+        rezult += font_ar[n];//добавим етот елемент из массива в результат
+        position += font_rom[n].length;//начинаем перебирать массив в следующий раз минуя предыдущее совпадение
+    }
+    else n--;//двигаемся в начало массива
+ }
+ return rezult;
+}
+	</script>
+</body>
+</html>
